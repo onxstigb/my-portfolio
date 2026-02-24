@@ -1,10 +1,11 @@
 "use client";
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
-  ExternalLink, Play, Code, Palette, Music, 
-  Gamepad2, Layers, Mail, Github, Linkedin, Monitor, 
+  ExternalLink, Play,
+  Mail, Github, Linkedin,
   User, X 
 } from 'lucide-react';
 
@@ -80,7 +81,7 @@ const categories = ["All", "UI/UX", "Audio", "3D/Dev", "Art"];
 export default function Portfolio() {
   const [filter, setFilter] = useState("All");
   const [showAbout, setShowAbout] = useState(false); // New state for Modal
-const [activeSketchbook, setActiveSketchbook] = useState(null);
+const [activeSketchbook, setActiveSketchbook] = useState<typeof projects[number] | null>(null);
 const [currentImage, setCurrentImage] = useState(0);
 
   const filteredProjects = filter === "All" 
@@ -94,7 +95,7 @@ const [currentImage, setCurrentImage] = useState(0);
       <header className="max-w-7xl mx-auto p-8 md:p-16 grid grid-cols-1 md:grid-cols-12 gap-8 items-end border-b border-gray-300 pb-12">
         <div className="md:col-span-8">
           <p className={`font-mono text-sm mb-4 tracking-widest uppercase ${theme.colors.accent}`}>
-            /// System Ready: Onesti_Brookins
+            {`/// System Ready: Onesti_Brookins`}
           </p>
           <h1 className="text-5xl md:text-7xl font-bold leading-tight tracking-tighter">
             CREATIVE<br />
@@ -197,7 +198,7 @@ const [currentImage, setCurrentImage] = useState(0);
               >
                 {/* Card Header / Window Bar */}
                 <div className="bg-gray-100 border-b border-gray-300 px-3 py-1 flex justify-between items-center">
-                  <span className="font-mono text-[10px] uppercase text-gray-500">{project.category} // {project.type}</span>
+                  <span className="font-mono text-[10px] uppercase text-gray-500">{project.category} {`//`} {project.type}</span>
                   <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
                 </div>
 
@@ -213,12 +214,15 @@ const [currentImage, setCurrentImage] = useState(0);
                           allow="autoplay"
                         ></iframe>
                      </div>
-                  ) : (
-                    <img 
+                  ) : project.image ? (
+                    <Image 
                       src={project.image} 
-                      alt={project.title} 
+                      alt={project.title}
+                      fill
                       className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
                     />
+                  ) : (
+                    <div className="w-full h-full bg-gray-300 flex items-center justify-center text-gray-500">No image available</div>
                   )}
                   
                   {/* Overlay Action Button - SMART LOGIC (Hides if no link) */}
@@ -262,7 +266,7 @@ const [currentImage, setCurrentImage] = useState(0);
       <footer className="border-t border-gray-300 bg-white">
         <div className="max-w-7xl mx-auto px-8 py-12 flex flex-col md:flex-row justify-between items-center gap-6">
           <p className="font-mono text-xs text-gray-500">
-            © 2026 [Onesti Brookins]. Built with Next.js & Late Nights.
+            © 2026 Onesti Brookins. Built with Next.js & Late Nights.
           </p>
           <div className="flex gap-6">
              <span className="font-mono text-xs uppercase hover:text-orange-600 cursor-pointer">Resume.pdf</span>
@@ -272,7 +276,7 @@ const [currentImage, setCurrentImage] = useState(0);
         </div>
       </footer>
 
-      {/* --- ABOUT ME MODAL (ADDED TO BOTTOM) --- */}
+      {/* --- ABOUT ME --- */}
       <AnimatePresence>
         {showAbout && (
           <motion.div
@@ -301,10 +305,10 @@ const [currentImage, setCurrentImage] = useState(0);
                 {/* Photo Section */}
                 <div className="bg-[#C0C0C0] p-4 flex items-center justify-center border-b md:border-b-0 md:border-r border-[#2A2A2A]">
                   <div className="w-full aspect-square border-2 border-[#2A2A2A] bg-white relative">
-                    {/* REPLACE SRC WITH YOUR HEADSHOT */}
-                    <img 
+                    <Image 
                       src="/api/placeholder/400/400" 
-                      alt="Onesti Brookins" 
+                      alt="Onesti Brookins"
+                      fill
                       className="w-full h-full object-cover filter grayscale contrast-125" 
                     />
                     <div className="absolute inset-0 bg-black opacity-10 pointer-events-none"></div>
@@ -322,12 +326,12 @@ const [currentImage, setCurrentImage] = useState(0);
                     <div className="space-y-4 text-sm leading-relaxed text-gray-700">
                       <p>
                         I bridge the gap between <strong className="text-black">logic and emotion</strong>. 
-                        Whether I'm writing C++ for a game mechanic, designing a high-fidelity interface in Figma, 
+                        Whether I&apos;m writing C++ for a game mechanic, designing a high-fidelity interface in Figma, 
                         or composing an ambient soundtrack, my goal is immersion.
                       </p>
                       <p>
                         Currently dual-specializing in Game Design and Web Development. 
-                        I believe the best digital experiences feel like they have a pulse.
+                        I believe the best digital experiences feel like they&apos;ve got a pulse.
                       </p>
                     </div>
                   </div>
@@ -336,7 +340,7 @@ const [currentImage, setCurrentImage] = useState(0);
                   <div className="mt-8 pt-6 border-t border-gray-300">
                     <h3 className="font-mono text-xs uppercase text-gray-500 mb-3">Skill_Tree</h3>
                     <div className="flex flex-wrap gap-2">
-                      {["React/Next.js", "Unreal Engine 5", "Figma", "Ableton Live", "Godot", "TypeScript"].map((skill) => (
+                      {["React/Next.js", "Unreal Engine 5", "Figma", "FL Studio", "Godot", "HTML/CSS/JS", "Unity"].map((skill) => (
                         <span key={skill} className="px-2 py-1 bg-white border border-[#2A2A2A] text-xs font-bold shadow-[2px_2px_0px_#C0C0C0]">
                           {skill}
                         </span>
@@ -385,36 +389,43 @@ const [currentImage, setCurrentImage] = useState(0);
 
           {/* Carousel */}
           <div className="relative flex items-center justify-center">
-            <button
-              className="absolute left-0 text-3xl font-bold"
-              onClick={() =>
-                setCurrentImage((prev) =>
-                  prev === 0
-                    ? activeSketchbook.images.length - 1
-                    : prev - 1
-                )
-              }
-            >
-              ‹
-            </button>
+            {activeSketchbook.images && (
+              <>
+                <button
+                  className="absolute left-0 text-3xl font-bold"
+                  onClick={() =>
+                    setCurrentImage((prev) =>
+                      prev === 0
+                        ? activeSketchbook.images!.length - 1
+                        : prev - 1
+                    )
+                  }
+                >
+                  ‹
+                </button>
 
-            <img
-              src={activeSketchbook.images[currentImage]}
-              className="max-h-[65vh] object-contain border border-black"
-            />
+                <Image
+                  src={activeSketchbook.images[currentImage]}
+                  alt={`${activeSketchbook.title} - Image ${currentImage + 1}`}
+                  width={800}
+                  height={600}
+                  className="max-h-[65vh] object-contain border border-black"
+                />
 
-            <button
-              className="absolute right-0 text-3xl font-bold"
-              onClick={() =>
-                setCurrentImage((prev) =>
-                  prev === activeSketchbook.images.length - 1
-                    ? 0
-                    : prev + 1
-                )
-              }
-            >
-              ›
-            </button>
+                <button
+                  className="absolute right-0 text-3xl font-bold"
+                  onClick={() =>
+                    setCurrentImage((prev) =>
+                      prev === activeSketchbook.images!.length - 1
+                        ? 0
+                        : prev + 1
+                    )
+                  }
+                >
+                  ›
+                </button>
+              </>
+            )}
           </div>
 
           <p className="mt-6 text-sm text-gray-600">
