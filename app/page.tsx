@@ -52,9 +52,9 @@ const projects = [
   },
 {
   id: 4,
-  title: "Sketchbook Vol. 1",
+  title: "Visual Studies",
   category: "Art",
-  type: "Digital Painting",
+  type: "Digital Works",
   image: "/images/sketch-cover.jpg",
   images: [
     "/images/sketch1.jpg",
