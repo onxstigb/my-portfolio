@@ -113,18 +113,18 @@ const [currentImage, setCurrentImage] = useState(0);
               Blending function with expression.
             </p>
             
-            {/* NEW: About Me Trigger Button (Styled to match your text) */}
+            {/* NEW: About Me Trigger Button */}
             <button 
               onClick={() => setShowAbout(true)}
               className="mt-6 flex items-center gap-2 border border-gray-400 px-4 py-2 rounded-full font-mono text-xs uppercase hover:bg-black hover:text-white transition-colors"
             >
               <User size={14} /> 
-              Identify_User.exe
+              About_User.exe
             </button>
           </div>
         </div>
         
-        {/* Contact "Window" - KEPT YOUR GLASSMORPHISM STYLE */}
+        {/* Contact "Window"*/}
         <div className="md:col-span-4 w-full">
           <div className="border border-gray-400 bg-white/50 backdrop-blur-sm shadow-[4px_4px_0px_0px_rgba(0,0,0,0.1)] p-4 rounded-sm">
             <div className="flex justify-between items-center border-b border-gray-200 pb-2 mb-2">
@@ -306,7 +306,7 @@ const [currentImage, setCurrentImage] = useState(0);
                 <div className="bg-[#C0C0C0] p-4 flex items-center justify-center border-b md:border-b-0 md:border-r border-[#2A2A2A]">
                   <div className="w-full aspect-square border-2 border-[#2A2A2A] bg-white relative">
                     <Image 
-                      src="/api/placeholder/400/400" 
+                      src="/images/onestiBrookinsHeadshot.jpg" 
                       alt="Onesti Brookins"
                       fill
                       className="w-full h-full object-cover filter grayscale contrast-125" 
@@ -320,13 +320,13 @@ const [currentImage, setCurrentImage] = useState(0);
                   <div>
                     <h2 className="text-3xl font-black mb-2 uppercase">Onesti Brookins</h2>
                     <p className="font-mono text-sm text-[#E94E1B] mb-6">
-                      Media Arts & Science @ IU Indianapolis
+                      Media Arts & Science Student @ IU Indianapolis
                     </p>
                     
                     <div className="space-y-4 text-sm leading-relaxed text-gray-700">
                       <p>
                         I bridge the gap between <strong className="text-black">logic and emotion</strong>. 
-                        Whether I&apos;m writing C++ for a game mechanic, designing a high-fidelity interface in Figma, 
+                        Whether I&apos;m writing code for a game mechanic, designing a high-fidelity interface in Figma, 
                         or composing an ambient soundtrack, my goal is immersion.
                       </p>
                       <p>
