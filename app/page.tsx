@@ -53,17 +53,16 @@ const projects = [
   },
 {
   id: 4,
-  title: "Sketchbook Vol.1",
+  title: "Visual Works Vol.1",
   category: "Art",
   type: "Digital Works",
   image: "/images/sketch-cover.jpg",
   images: [
-    "/images/sketch1.jpg",
-    "/images/sketch2.jpg",
-    "/images/sketch3.jpg",
-    "/images/sketch4.jpg",
+    "/images/Red_PandaCharacter.jpg",
+    "/images/character-sketch-plant.jpeg",
+    "/images/Music-Creators-Callout.jpg",
   ],
-  description: "Character concept art and environmental sketches.",
+  description: "This is a collection of digital works I have made from the past few years, including character designs, sketches, and experimental pieces. A peek into my creative process and artistic growth.",
 },
   {
     id: 5,
@@ -72,7 +71,7 @@ const projects = [
     type: "React Website",
     image: "/images/DocuGen-HomePage.jpg", 
     link: "https://n317-final.vercel.app/",
-    description: "DocuGen AI converts raw source code into readable, structured markdown. Reduce manual effort and improve code clarity.",
+    description: "DocuGen AI converts raw source code into readable, structured markdown. Reduce manual effort and improve code clarity. For this site, I designed the UI/UX and implemented the frontend using React.",
   }
 ];
 
@@ -80,13 +79,13 @@ const categories = ["All", "UI/UX", "Audio", "3D/Dev", "Art"];
 
 export default function Portfolio() {
   const [filter, setFilter] = useState("All");
-  const [showAbout, setShowAbout] = useState(false); // New state for Modal
+  const [showAbout, setShowAbout] = useState(false); 
 const [activeSketchbook, setActiveSketchbook] = useState<typeof projects[number] | null>(null);
 const [currentImage, setCurrentImage] = useState(0);
 
   const filteredProjects = filter === "All" 
     ? projects 
-    : projects.filter(p => p.category === filter); // Fixed filter logic to be more standard
+    : projects.filter(p => p.category === filter); // Filter logic to be more standard
 
   return (
     <div className={`min-h-screen ${theme.colors.bg} ${theme.colors.text} font-sans selection:bg-orange-500 selection:text-white relative`}>
@@ -113,7 +112,7 @@ const [currentImage, setCurrentImage] = useState(0);
               Blending function with expression.
             </p>
             
-            {/* NEW: About Me Trigger Button */}
+            {/* About Me Trigger Button */}
             <button 
               onClick={() => setShowAbout(true)}
               className="mt-6 flex items-center gap-2 border border-gray-400 px-4 py-2 rounded-full font-mono text-xs uppercase hover:bg-black hover:text-white transition-colors"
@@ -139,7 +138,7 @@ const [currentImage, setCurrentImage] = useState(0);
               <a href="mailto:onestibrookins@gmail.com" className="flex items-center gap-2 hover:text-orange-600 transition-colors font-mono text-sm">
                 <Mail size={14}/> onestibrookins@gmail.com
               </a>
-              {/* UPDATED: New Tab Links */}
+              {/* Tab Links */}
               <a href="https://www.linkedin.com/in/onestibrookins/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-blue-600 transition-colors font-mono text-sm">
                 <Linkedin size={14}/> LinkedIn
               </a>
@@ -225,7 +224,7 @@ const [currentImage, setCurrentImage] = useState(0);
                     <div className="w-full h-full bg-gray-300 flex items-center justify-center text-gray-500">No image available</div>
                   )}
                   
-                  {/* Overlay Action Button - SMART LOGIC (Hides if no link) */}
+                  {/* Overlay Action Button (Hides if no link) */}
                   <div className="absolute inset-0 bg-black/10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                      {project.link && project.link !== "#" && !project.images && (
                        <a 
@@ -293,6 +292,7 @@ const [currentImage, setCurrentImage] = useState(0);
               onClick={(e) => e.stopPropagation()}
               className="bg-[#FDFCF0] w-full max-w-2xl border-2 border-[#2A2A2A] shadow-[8px_8px_0px_#E94E1B] overflow-hidden"
             >
+
               {/* Window Bar */}
               <div className="bg-[#2A2A2A] text-white px-4 py-2 flex justify-between items-center cursor-move">
                 <span className="font-mono text-xs uppercase tracking-widest">user_profile.exe</span>
@@ -302,6 +302,7 @@ const [currentImage, setCurrentImage] = useState(0);
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-3">
+
                 {/* Photo Section */}
                 <div className="bg-[#C0C0C0] p-4 flex items-center justify-center border-b md:border-b-0 md:border-r border-[#2A2A2A]">
                   <div className="w-full aspect-square border-2 border-[#2A2A2A] bg-white relative">
