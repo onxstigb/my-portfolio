@@ -346,7 +346,7 @@ export default function Portfolio() {
         )}
       </AnimatePresence>
 
-      {/* --- ABOUT ME MODAL (Same as original) --- */}
+      {/* --- ABOUT ME MODAL --- */}
       <AnimatePresence>
         {showAbout && (
           <motion.div
@@ -378,7 +378,7 @@ export default function Portfolio() {
                     </p>
                   </div>
                   <div className="mt-8 pt-6 border-t border-gray-300 flex flex-wrap gap-2">
-                    {["React", "UE5", "Figma", "FL Studio", "Wwise"].map((skill) => (
+                    {["React", "UE5", "Figma", "FL Studio", "Wwise", "TypeScript", "HTML/CSS/JS"].map((skill) => (
                       <span key={skill} className="px-2 py-1 bg-white border border-black text-[10px] font-bold shadow-[2px_2px_0px_#C0C0C0]">{skill}</span>
                     ))}
                   </div>
