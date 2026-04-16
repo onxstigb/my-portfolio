@@ -38,6 +38,7 @@ const projects = [
     title: "Project Redline {WIP}",
     category: "Audio",
     type: "Lead Sound Design",
+    image: "/images/album-cover.JPEG",
     embedUrl: "https://w.soundcloud.com/player/?url=https://soundcloud.com/atlasveil/overclocked&color=%23E94E1B&visual=true",
     link: "https://soundcloud.com/atlasveil/overclocked",
     description: "Serving as Lead Sound Designer on a developing racing game, creating dynamic music and sound effects.",
